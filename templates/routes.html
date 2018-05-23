@@ -1,0 +1,330 @@
+												<div class="AviaResultListResultDesktop__Routes">
+													{% for route in flight.routes %}
+
+														<div class="AviaResultListResultDesktop__Route">
+															<div class="AviaResultRouteDesktop">
+																<div class="AviaResultRouteDesktop__Inner">
+
+																	<div class="AviaResultRouteDesktop__SingleRow__Segment">
+																		<div class="AviaResultRouteDesktop__SegmentTitle">
+																			<div class="AviaResultRouteDesktop__SegmentTitle__Icon">
+																				<div class="AviaResultRouteDesktop__SegmentTitle__Icon__Inner">
+																					<div class="Icon">
+																						<div class="Icon__Svg"></div>
+																					</div>
+																				</div>
+																			</div>
+																			<img alt="{{ route.carrier.code }}" style="width:90px;height:30px;" class="AviaSupplierLogo" src="https://s.aviakassa.ru/suppliers/{{ route.carrier.code }}.png">
+
+																			<span>{{ route.carrier.title }}</span>
+																		</div>
+																		<div class="AviaResultRouteDesktop__SingleRow__Segment__Inner" id="single_{{ route.id }}">
+																			<div class="AviaResultRouteDesktopColumns">
+																				<div class="AviaResultRouteDesktopColumns__Row">
+																					<div class="AviaResultRouteDesktopColumns__Column AviaResultRouteDesktopColumns__Column--departure">
+																						<div>
+
+                                                                                            <span>
+
+                                                                                        <span class="AviaResultRouteDesktopColumns__Column__Time">
+                                                                                            <span>{{ route.dep.time }}</span>
+                                                                                        </span>
+
+                                                                                        <span>&nbsp;</span>
+                                                                                        <span>{{ route.dep.airport.code }}</span>
+                                                                                    </span>
+																							<div>
+																								<div class="AviaResultRouteDesktopColumns__Column__Date" title="{{ route.dep.date }}">
+																									{{ route.dep.date }}
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																					<div class="AviaResultRouteDesktopColumns__Column AviaResultRouteDesktopColumns__Column--flightLine">
+																						<div class="AviaResultRouteDesktopColumns__FlightLine">
+																							<div class="AviaResultRouteDesktopColumns__FlightLine__Row">
+																								<div class="AviaResultRouteDesktopColumns__FlightLine__Col AviaResultRouteDesktopColumns__FlightLine__Col--departure">
+																									<div class="AviaResultRouteDesktopColumns__Circle"></div>
+																									<span>&nbsp;</span>
+																								</div>
+																								<div class="AviaResultRouteDesktopColumns__FlightLine__Col AviaResultRouteDesktopColumns__FlightLine__Col--filler"></div>
+																								<div class="AviaResultRouteDesktopColumns__FlightLine__Col AviaResultRouteDesktopColumns__FlightLine__Col--arrival">
+																									<span>&nbsp;</span>
+																									<div class="Icon">
+																										<div class="Icon__Svg"></div>
+																									</div>
+																								</div>
+																							</div>
+																							<div class="AviaResultRouteDesktopColumns__FlightLine__Duration">
+																								<div>
+																									<span>
+																									<div class="Icon Icon--spaceRight">
+                                                                                                    <div class="Icon__Svg">
+                                                                                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 510">
+	                                                                                                      <g fill-opacity=".9">
+		                                                                                                      <path d="M255 0C114.75 0 0 114.75 0 255s114.75 255 255 255 255-114.75 255-255S395.25 0 255 0zm0 459c-112.2 0-204-91.8-204-204S142.8 51 255 51s204 91.8 204 204-91.8 204-204 204z"></path>
+		                                                                                                      <path d="M267.75 127.5H229.5v153l132.6 81.6 20.4-33.15-114.75-68.85z">
+
+		                                                                                                      </path>
+	                                                                                                      </g>
+                                                                                                      </svg>
+                                                                                                    </div>
+
+
+                                                                                                </div>
+																									<span>{{ route.duration.hour }}ч {{ route.duration.minute }}м</span>
+
+																								</span>
+																									{% if route.transfers_count %}
+																									<span>, {{ route.transfers_count }} {{ route.transfers_word }}</span>
+																									{% endif %}
+
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																					<div class="AviaResultRouteDesktopColumns__Column AviaResultRouteDesktopColumns__Column--arrival">
+																						<div><span>
+
+                                                                                            <span>{{ route.arr.airport.code }}</span>
+                                                                                            <span>&nbsp;</span>
+                                                                                            <span class="AviaResultRouteDesktopColumns__Column__Time">
+
+                                                                                                <span>{{ route.arr.time }}</span></span>
+
+                                                                                        </span>
+																							<div>
+																								<div class="AviaResultRouteDesktopColumns__Column__Date" title="{{ route.arr.date }}">
+																									{{ route.arr.date }}
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																					<div class="AviaResultRouteDesktopColumns__Column AviaResultRouteDesktopColumns__Column--flightInfo">
+																						<div>
+                                                                                            <span class="AviaResultRouteDesktopColumns__Column__FlightNumber">
+                                                                                            <span>{{ route.carrier.code }}</span>
+                                                                                            <span>-</span>
+                                                                                            <span>{{ route.flight_number }}</span>
+                                                                                        </span>
+																							<div class="AviaResultRouteDesktopColumns__Column__Aircraft" title="{{ route.aircraft.title }}">
+																								{{ route.aircraft.title }}
+																							</div>
+																						</div>
+																					</div>
+																					<div class="AviaResultRouteDesktopColumns__Column AviaResultRouteDesktopColumns__Column--details">
+																						<div class="AviaResultRouteDesktopColumns__Details__Inner">
+                                                                        <span>
+                                                                            <span class="AviaResultRouteDesktopColumns__Details__Info"><span>
+                                                                            </span>
+                                                                                <br>
+                                                                                <span class="AviaResultRouteDesktopColumns__Details__Info__Item">{{ search.class_word }}</span>
+
+                                                                            </span>
+                                                                            <span class="AviaResultRouteDesktopColumns__Details__Expander">
+                                                                                <a icon="airplane"  class="Link Link--underline" id="single_click_{{ route.id }}">
+	                                                                                <div class="Icon Icon--spaceRight Link__Icon">
+		                                                                                <div class="Icon__Svg">
+			                                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 510">
+				                                                                                <path d="M510 255c0-20.4-17.85-38.25-38.25-38.25H331.5L204 12.75h-51l63.75 204H76.5l-38.25-51H0L25.5 255 0 344.25h38.25l38.25-51h140.25l-63.75 204h51l127.5-204h140.25c20.4 0 38.25-17.85 38.25-38.25z">
+		                                                                                        </path>
+			                                                                                </svg>
+		                                                                                </div>
+	                                                                                </div>
+	                                                                                <span class="Link__Content">Подробнее</span></a></span></span>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+
+
+																		</div>
+
+																		<!-- ExpandedSegments -->
+																		<div class="AviaResultRouteDesktop__ExpandedSegments" id="segments_{{ route.id }}" hidden="hidden">
+
+																		    <script type="text/javascript">
+																			         $(document).ready(function() {
+																			              $("#segments_click_{{ route.id }}").click(function() {
+																			                   $("#segments_{{ route.id }}").hide();
+																				               $("#single_{{ route.id }}").show();
+																			              });
+
+																				         $("#single_click_{{ route.id }}").click(function() {
+																					         $("#single_{{ route.id }}").hide();
+																					          $  ("#segments_{{ route.id }}").show();
+																			              });
+																			         });
+																		    </script>
+
+																		<div class="AviaResultRouteDesktop__ExpandedSegments__Close" id="segments_click_{{ route.id }}">
+																			<a icon="cross"  class="Link Link--underline">
+																				<div class="Icon Icon--spaceRight Link__Icon">
+																					<div class="Icon__Svg">
+																						<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+																							<path d="M9.902 8l5.704-5.705a1.345 1.345 0 1 0-1.9-1.9L8 6.097 2.296.394a1.345 1.345 0 1 0-1.902 1.9L6.1 8 .393 13.704a1.345 1.345 0 1 0 1.9 1.902L8 9.9l5.705 5.706a1.345 1.345 0 1 0 1.9-1.902L9.903 8z" fill-rule="evenodd"></path>
+																						</svg>
+																					</div>
+																				</div>
+																				<span class="Link__Content">Свернуть</span></a>
+																		</div>
+
+																			{% for segment in route.segments %}
+
+																				<div class="AviaResultRouteDesktop__ExpandedSegments__Segment">
+																			<div class="AviaResultRouteDesktop__SegmentTitle">
+																				<div class="AviaResultRouteDesktop__SegmentTitle__Icon">
+																					<div class="AviaResultRouteDesktop__SegmentTitle__Icon__Inner">
+																						<div class="Icon">
+																							<div class="Icon__Svg">
+																								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 510">
+																									<path d="M510 255c0-20.4-17.85-38.25-38.25-38.25H331.5L204 12.75h-51l63.75 204H76.5l-38.25-51H0L25.5 255 0 344.25h38.25l38.25-51h140.25l-63.75 204h51l127.5-204h140.25c20.4 0 38.25-17.85 38.25-38.25z"></path>
+																								</svg>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<img alt="{{ segment.carrier.code }}" style="width:90px;height:30px;" class="AviaSupplierLogo" src="https://s.aviakassa.ru/suppliers/{{ segment.carrier.code }}.png">
+																				<span>{{ segment.carrier.title }}</span>
+																			</div>
+																			<div class="AviaResultRouteDesktop__ExpandedSegments__Segment__Inner">
+																				<div class="AviaResultRouteDesktopColumns">
+																					<div class="AviaResultRouteDesktopColumns__Row">
+																						<div class="AviaResultRouteDesktopColumns__Column AviaResultRouteDesktopColumns__Column--departure">
+																							<div>
+																								<span>
+																									<span class="AviaResultRouteDesktopColumns__Column__Time">
+																										<span>{{ segment.dep.time }}</span>
+																									</span>
+																									<span>&nbsp;</span>
+																									<span>{{ segment.dep.airport.code }}</span>
+																								</span>
+																								<div>
+																									<div class="AviaResultRouteDesktopColumns__Column__Date" title="{{ segment.dep.date }}">{{ segment.dep.date }}</div>
+																								</div>
+																								<div>
+																									<div class="AviaResultRouteDesktopColumns__Column__Destination" title="{{ segment.dep.airport.code }}"> {{ segment.dep.airport.title }}</div>
+																								</div>
+																							</div>
+																						</div>
+																						<div class="AviaResultRouteDesktopColumns__Column AviaResultRouteDesktopColumns__Column--flightLine">
+																							<div class="AviaResultRouteDesktopColumns__FlightLine">
+																								<div class="AviaResultRouteDesktopColumns__FlightLine__Row">
+																									<div class="AviaResultRouteDesktopColumns__FlightLine__Col AviaResultRouteDesktopColumns__FlightLine__Col--departure">
+																										<div class="AviaResultRouteDesktopColumns__Circle"></div>
+																										<span>&nbsp;</span>
+																									</div>
+																									<div class="AviaResultRouteDesktopColumns__FlightLine__Col AviaResultRouteDesktopColumns__FlightLine__Col--filler"></div>
+																									<div class="AviaResultRouteDesktopColumns__FlightLine__Col AviaResultRouteDesktopColumns__FlightLine__Col--arrival">
+																										<span>&nbsp;</span>
+																										<div class="Icon">
+																											<div class="Icon__Svg">
+																												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 510">
+																													<path d="M510 255c0-20.4-17.85-38.25-38.25-38.25H331.5L204 12.75h-51l63.75 204H76.5l-38.25-51H0L25.5 255 0 344.25h38.25l38.25-51h140.25l-63.75 204h51l127.5-204h140.25c20.4 0 38.25-17.85 38.25-38.25z">
+																													</path>
+																												</svg>
+																											</div>
+																										</div>
+																									</div>
+																								</div>
+																								<div class="AviaResultRouteDesktopColumns__FlightLine__Duration">
+																									<div>
+																										<span>
+																											<div class="Icon Icon--spaceRight">
+																												<div class="Icon__Svg">
+																													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 510">
+																														<g fill-opacity=".9">
+																															<path d="M255 0C114.75 0 0 114.75 0 255s114.75 255 255 255 255-114.75 255-255S395.25 0 255 0zm0 459c-112.2 0-204-91.8-204-204S142.8 51 255 51s204 91.8 204 204-91.8 204-204 204z">
+
+																													</path>
+																															<path d="M267.75 127.5H229.5v153l132.6 81.6 20.4-33.15-114.75-68.85z"></path>
+																													</g></svg>
+																												</div>
+																											</div>
+
+																											<span>{{ segment.duration.flight.hour }}ч {{ segment.duration.flight.minute }}м</span>
+																										</span>
+																										<span></span>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																						<div class="AviaResultRouteDesktopColumns__Column AviaResultRouteDesktopColumns__Column--arrival">
+																							<div>
+																								<span>
+																									<span>{{ segment.arr.airport.code }}</span>
+																									<span>&nbsp;</span>
+																									<span class="AviaResultRouteDesktopColumns__Column__Time">
+																										<span>{{ segment.arr.time }}
+																										</span>
+																									</span>
+																								</span>
+																								<div>
+																									<div class="AviaResultRouteDesktopColumns__Column__Date" title="{{ segment.arr.date }}">{{ segment.arr.date }}</div>
+																								</div>
+																								<div>
+																									<div class="AviaResultRouteDesktopColumns__Column__Destination" title="{{ segment.arr.airport.code }}"> {{ segment.arr.airport.title }}</div>
+																								</div>
+																							</div>
+																						</div>
+																						<div class="AviaResultRouteDesktopColumns__Column AviaResultRouteDesktopColumns__Column--flightInfo">
+																							<div>
+																								<span class="AviaResultRouteDesktopColumns__Column__FlightNumber">
+																					            <span>{{ segment.carrier.code }}</span>
+                                                                                                <span>-</span>
+                                                                                                <span>{{ segment.flight_number }}</span>
+																								</span>
+																								<div class="AviaResultRouteDesktopColumns__Column__Aircraft" title="{{ segment.aircraft.title }}">{{ segment.aircraft.title }}</div>
+																								<div class="AviaResultRouteDesktopColumns__Column__OperatingSupplier" title="Delta Air Lines">{{ segment.carrier.title }}</div>
+																							</div>
+																						</div>
+																						<div class="AviaResultRouteDesktopColumns__Column AviaResultRouteDesktopColumns__Column--details">
+																							<div class="AviaResultRouteDesktopColumns__Details__Inner">
+																								<span>
+																									<span>&nbsp;</span>
+																									<br>
+																									<span class="AviaResultRouteDesktopColumns__Details__Seats">
+																										<div class="Icon Icon--spaceRight">
+																											<div class="Icon__Svg">
+																												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240.235 240.235">
+																													<path d="M211.74 6.089C208.08 2.163 203.03 0 197.52 0h-15.143c-11.16 0-21.811 8.942-23.74 19.934l-.955 5.436c-.96 5.47.332 10.651 3.639 14.589s8.186 6.106 13.74 6.106h19.561c2.714 0 5.339-.542 7.778-1.504l-2.079 17.761a16.739 16.739 0 0 0-6.507-1.289h-22.318c-9.561 0-18.952 7.609-20.936 16.961l-19.732 93.027-93.099-6.69c-5.031-.36-9.231 1.345-11.835 4.693-2.439 3.136-3.152 7.343-2.009 11.847l10.824 42.618c2.345 9.233 12.004 16.746 21.53 16.746h118.97c9.653 0 18.336-7.811 19.354-17.411l15.272-143.98c.087-.823.097-1.634.069-2.437l5.227-44.648a21.032 21.032 0 0 0 1.354-6.087l.346-4.97c.39-5.503-1.41-10.692-5.08-14.619z"></path></svg></div></div>
+																										<span>Осталось {{ segment.seats }} {{ segment.seats_word }}</span>
+																									</span>
+
+																									<div class="AviaResultRouteDesktopColumns__Details__ServiceClass"> {% if segment.class.type_id == 1 %}Эконом{% else %}Бизнес{% endif %}</div></span>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				{% if segment.duration.transfer %}
+
+																					<div class="AviaResultRouteDesktop__SegmentWaitTime">
+																					<span>До следующего рейса</span>
+																					<span>:</span>
+																					<div class="Icon Icon--spaceRight Icon--spaceLeft">
+																						<div class="Icon__Svg">
+																							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 174.239 174.239">
+																								<path d="M140.92 40.784v-12.1h8.809V0H24.509v28.683h8.809v12.1c0 19.733 10.711 36.972 26.593 46.336-15.883 9.364-26.593 26.603-26.593 46.336v12.1h-8.809v28.683h125.22v-28.683h-8.809v-12.1c0-19.733-10.711-36.972-26.593-46.336 15.88-9.368 26.59-26.608 26.59-46.34zm-14.93 92.676v12.1H48.251v-12.1c0-21.43 17.436-38.868 38.868-38.868s38.871 17.438 38.871 38.868zM87.12 79.652c-21.432 0-38.868-17.439-38.868-38.868v-12.1h77.737v12.1c0 21.43-17.44 38.868-38.87 38.868z"></path>
+																							</svg>
+																						</div>
+																					</div>
+																					<span>{{ segment.duration.transfer.hour }}ч {{ segment.duration.transfer.minute }}м</span>
+																				</div>
+
+																				{% endif %}
+																			</div>
+																		</div>
+																			{% endfor %}
+
+																	</div>
+
+
+
+																	</div>
+																</div>
+
+															</div>
+														</div>
+													{% endfor %}
+
+												</div>
